@@ -51,7 +51,7 @@ input {
   left: 42%;
 }
 
-#inputSubmitContainer {
+#inputSubmitForm {
   display: flex;
 }
 
@@ -72,4 +72,9 @@ input {
   height: 40px;
   position: relative;
   top: 21px;
+}
+
+#gameText {
+  position: relative;
+  right: 10%;
 }

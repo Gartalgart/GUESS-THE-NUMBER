@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-family: "Raleway", sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 500px;
+  height: 300px;
+}
+
+p,
+label {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  background-color: #0f172a;
+  border: none;
+  border-radius: 6px;
+}
+
+input {
+  height: 35px;
+  border-radius: 6px;
+  border: 2px solid black;
+  padding: 0 8px;
+}
+#score {
+  position: relative;
+  left: 42%;
+}
+
+#inputSubmitContainer {
+  display: flex;
+}
+
+#inputNumber {
+  width: 372px;
+  margin-top: 4px;
+}
+
+#startBtn {
+  position: relative;
+  cursor: pointer;
+  right: 35%;
+  padding: 8px 16px;
+}
+
+#submitBtn {
+  width: 80px;
+  height: 40px;
+  position: relative;
+  top: 21px;
+}

@@ -39,6 +39,7 @@ export default class Elements {
 
     this.labelInput = document.createElement("label");
     this.labelInput.innerText = "Your guess";
+    this.labelInput.htmlFor = "inputNumber";
 
     this.inputNumber = document.createElement("input");
     this.inputNumber.id = "inputNumber";

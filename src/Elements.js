@@ -1,4 +1,4 @@
-import { createParagraph, createButton } from "./utils";
+import { createParagraph, createButton } from "./utils.js";
 
 export default class Elements {
   constructor(appElement) {

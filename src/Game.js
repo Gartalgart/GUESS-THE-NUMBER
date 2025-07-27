@@ -1,4 +1,4 @@
-import Elements from "./Elements";
+import Elements from "./Elements.js";
 
 export default class Game extends Elements {
   constructor() {

@@ -1,5 +1,6 @@
-import { app, startText, startBtn } from "./src/elements.js";
-import { attachEvents } from "./src/events.js";
+import Game from "./src/Game.js";
 
-app.append(startText, startBtn);
-attachEvents();
+const app = document.getElementById("app");
+
+let game = new Game(app);
+game.mount();

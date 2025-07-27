@@ -10,10 +10,11 @@ export const createParagraph = (id, text) => {
 };
 
 //Fonction pour pour créer une balise <button> avec un id et du texte
-export const createButton = (id, text) => {
+export const createButton = (id, text, classe) => {
   const btn = document.createElement("button");
   btn.id = id;
   btn.innerText = text;
+  btn.classList.add(classe);
 
   return btn;
 };

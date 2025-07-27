@@ -1,0 +1,97 @@
+import Elements from "./Elements";
+
+export default class Game extends Elements {
+  constructor() {
+    super(document.getElementById("app"));
+    this.multiplicator = null;
+
+    this.startBtn.addEventListener("click", () => this.startGame());
+    this.submitBtn.addEventListener("click", (e) => this.handleGuess(e));
+    this.restartBtn.addEventListener("click", () => {
+      this.restartBtn.blur();
+      Game.restart(this.app);
+    });
+  }
+  mount() {
+    this.app.append(this.startText, this.buttonContainer);
+    this.levelBtn = document.querySelectorAll(".btnLevel");
+
+    this.levelBtn.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        this.levelBtn.forEach((b) => b.classList.remove("clicked"));
+        btn.classList.add("clicked");
+
+        switch (btn.id) {
+          case "btnLevel1":
+            this.level = 1;
+            console.log("Niveau 1");
+            break;
+          case "btnLevel2":
+            this.level = 2;
+            console.log("Niveau 2");
+            break;
+          case "btnLevel3":
+            this.level = 3;
+            console.log("Niveau 3");
+            break;
+        }
+      });
+    });
+  }
+  //Fonction qui permet de commencer le jeu
+  startGame() {
+    // permet de remplacer tous les enfants d’un élément HTML par de nouveaux éléments, en une seule opération
+    const levels = {
+      1: 100,
+      2: 500,
+      3: 1000,
+    };
+
+    this.multiplicator = levels[this.level] || 100;
+    this.randomNumber = Math.floor(Math.random() * this.multiplicator);
+    this.sentence.innerText = `I generated a number between 0 and ${this.multiplicator}, try to find it 😆`;
+    this.app.replaceChildren(
+      this.sentence,
+      this.score,
+      this.inputSubmitForm,
+      this.restartBtn
+    );
+    console.log(this.randomNumber);
+  }
+
+  //Fonction qui détermine sur la valeur entré en sup inf ou égale au nombre généré aléatoirement
+  handleGuess(e) {
+    e.preventDefault();
+    const guess = Number(this.inputNumber.value);
+    let message = "";
+    this.attempts++;
+
+    if (isNaN(guess) || guess < 0 || guess > this.multiplicator) {
+      message = `Enter a number between 0 and ${this.multiplicator} !`;
+    } else if (guess > this.randomNumber) {
+      message = `🔴 My guess is below ${guess}.`;
+    } else if (guess < this.randomNumber) {
+      message = `🔴 My guess is above ${guess}.`;
+    } else {
+      message = `🟢 You've found my guess, it's ${guess} in ${this.attempts} attempts.`;
+    }
+
+    this.gameText.innerText = message;
+    //contains() permet de vérifier si un élément est un enfant d'un parent.
+    if (!this.app.contains(this.gameText)) this.app.appendChild(this.gameText);
+    this.score.innerText = `Attempts: ${this.attempts}`;
+
+    //Si guess est différent de randomNumber après un délai de 2s gameText sera effacé.
+    if (guess !== this.randomNumber) {
+      setTimeout(() => {
+        this.gameText.innerText = "";
+      }, 2000);
+    }
+  }
+
+  static restart(appElement) {
+    appElement.innerHTML = "";
+    const newGame = new Game(appElement);
+    newGame.mount();
+  }
+}

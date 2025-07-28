@@ -37,6 +37,15 @@ export default class Elements {
     this.range.height = 40;
     this.context = this.range.getContext("2d");
 
+    this.rangeNumberContainer = document.createElement("div");
+    this.rangeNumberContainer.id = "rangeNumberContainer";
+    this.rangeNumberMin = document.createElement("div");
+    this.rangeNumberMin.id = "rangeNumberMin";
+    this.rangeNumberMin.innerText = "0";
+    this.rangeNumberMax = document.createElement("div");
+    this.rangeNumberMax.id = "rangeNumberMax";
+    this.rangeNumberContainer.append(this.rangeNumberMin, this.rangeNumberMax);
+
     this.restartBtn = createButton("restartBtn", "Restart");
 
     //FORMULAIRE

@@ -49,11 +49,13 @@ export default class Game extends Elements {
     this.multiplicator = levels[this.level] || 100;
     this.randomNumber = Math.floor(Math.random() * this.multiplicator);
     this.sentence.innerText = `I generated a number between 0 and ${this.multiplicator}, try to find it 😆`;
+    this.rangeNumberMax.innerText = `${this.multiplicator}`;
     this.app.replaceChildren(
       this.sentence,
       this.score,
       this.inputSubmitForm,
       this.range,
+      this.rangeNumberContainer,
       this.restartBtn
     );
     console.log(this.randomNumber);
@@ -79,7 +81,7 @@ export default class Game extends Elements {
     let message = "";
     this.attempts++;
     this.context.font = "bold 24px Arial";
-    this.context.fillStyle = "black";
+    this.context.fillStyle = "white";
 
     if (guess === this.randomNumber) {
       this.context.fillText("🟢", x, 30);

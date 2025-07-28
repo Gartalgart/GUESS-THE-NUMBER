@@ -5,6 +5,7 @@ export default class Elements {
     //CONSTANTS
     this.app = appElement;
     this.attempts = 0;
+    this.multiplicator = 100;
 
     //PAGE D'ACCUEIL
     this.startText = createParagraph(
@@ -29,9 +30,14 @@ export default class Elements {
     this.sentence = createParagraph("sentence", "");
     this.score = createParagraph("score", `Attempts: ${this.attempts}`);
     this.gameText = createParagraph("gameText", "");
-    this.inputRange = document.createElement("input");
+
+    this.range = document.createElement("canvas");
+    this.range.id = "range";
+    this.range.width = 500;
+    this.range.height = 40;
+    this.context = this.range.getContext("2d");
+
     this.restartBtn = createButton("restartBtn", "Restart");
-    this.inputRange.id = "inputRange";
 
     //FORMULAIRE
     this.inputSubmitForm = document.createElement("form");
@@ -44,6 +50,7 @@ export default class Elements {
     this.inputNumber = document.createElement("input");
     this.inputNumber.id = "inputNumber";
     this.inputNumber.placeholder = "Tape un nombre";
+    this.inputNumber.value = "0";
 
     this.submitBtn = createButton("submitBtn", "Submit");
 

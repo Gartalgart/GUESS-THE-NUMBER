@@ -3,7 +3,6 @@ import Elements from "./Elements.js";
 export default class Game extends Elements {
   constructor() {
     super(document.getElementById("app"));
-    this.multiplicator = null;
 
     this.startBtn.addEventListener("click", () => this.startGame());
     this.submitBtn.addEventListener("click", (e) => this.handleGuess(e));
@@ -54,17 +53,39 @@ export default class Game extends Elements {
       this.sentence,
       this.score,
       this.inputSubmitForm,
+      this.range,
       this.restartBtn
     );
     console.log(this.randomNumber);
   }
 
+  rangePosition() {
+    const guess = Number(this.inputNumber.value);
+
+    switch (this.multiplicator) {
+      case 100:
+        return guess * 5;
+      case 500:
+        return guess;
+      case 1000:
+        return guess / 2;
+    }
+  }
   //Fonction qui détermine sur la valeur entré en sup inf ou égale au nombre généré aléatoirement
   handleGuess(e) {
     e.preventDefault();
     const guess = Number(this.inputNumber.value);
+    const x = this.rangePosition();
     let message = "";
     this.attempts++;
+    this.context.font = "bold 24px Arial";
+    this.context.fillStyle = "black";
+
+    if (guess === this.randomNumber) {
+      this.context.fillText("🟢", x, 30);
+    } else {
+      this.context.fillText("X", x, 30);
+    }
 
     if (isNaN(guess) || guess < 0 || guess > this.multiplicator) {
       message = `Enter a number between 0 and ${this.multiplicator} !`;

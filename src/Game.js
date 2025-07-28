@@ -16,7 +16,7 @@ export default class Game extends Elements {
     this.levelBtn = document.querySelectorAll(".btnLevel");
 
     this.levelBtn.forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("pointerdown", () => {
         this.levelBtn.forEach((b) => b.classList.remove("clicked"));
         btn.classList.add("clicked");
 

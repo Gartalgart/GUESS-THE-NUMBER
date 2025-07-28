@@ -16,14 +16,10 @@ export default class Game extends Elements {
     this.levelBtn = document.querySelectorAll(".btnLevel");
 
     this.levelBtn.forEach((btn) => {
-      btn.addEventListener("pointerdown", () => {
-        // Retirer la classe "clicked" de tous les boutons
+      btn.addEventListener("click", () => {
         this.levelBtn.forEach((b) => b.classList.remove("clicked"));
-
-        // Ajouter "clicked" au bouton actif
         btn.classList.add("clicked");
 
-        // Définir le niveau
         switch (btn.id) {
           case "btnLevel1":
             this.level = 1;

@@ -59,7 +59,6 @@ export default class Elements {
     this.inputNumber = document.createElement("input");
     this.inputNumber.id = "inputNumber";
     this.inputNumber.placeholder = "Tape un nombre";
-    this.inputNumber.value = "0";
 
     this.submitBtn = createButton("submitBtn", "Submit");
 

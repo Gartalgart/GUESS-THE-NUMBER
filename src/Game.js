@@ -97,6 +97,8 @@ export default class Game extends Elements {
       message = `🔴 My guess is above ${guess}.`;
     } else {
       message = `🟢 You've found my guess, it's ${guess} in ${this.attempts} attempts.`;
+      this.inputNumber.disabled = true;
+      this.submitBtn.disabled = true;
     }
 
     this.gameText.innerText = message;
@@ -104,12 +106,12 @@ export default class Game extends Elements {
     if (!this.app.contains(this.gameText)) this.app.appendChild(this.gameText);
     this.score.innerText = `Attempts: ${this.attempts}`;
 
-    //Si guess est différent de randomNumber après un délai de 2s gameText sera effacé.
-    if (guess !== this.randomNumber) {
-      setTimeout(() => {
-        this.gameText.innerText = "";
-      }, 2000);
-    }
+    //Si guess est différent de randomNumber, après un délai de 2s gameText sera effacé.
+    // if (guess !== this.randomNumber) {
+    //   setTimeout(() => {
+    //     this.gameText.innerText = message;
+    //   }, 2000);
+    // }
   }
 
   static restart(appElement) {

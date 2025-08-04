@@ -1,4 +1,5 @@
 import Elements from "./Elements.js";
+import { displayGameText } from "./utils.js";
 
 export default class Game extends Elements {
   constructor() {
@@ -79,6 +80,7 @@ export default class Game extends Elements {
     const guess = Number(this.inputNumber.value);
     const x = this.rangePosition();
     let message = "";
+    const element = this.gameText;
     this.attempts++;
     this.context.font = "bold 24px Arial";
     this.context.fillStyle = "white";
@@ -101,17 +103,15 @@ export default class Game extends Elements {
       this.submitBtn.disabled = true;
     }
 
-    this.gameText.innerText = message;
+    if (this.attempts === 1) {
+      this.gameText.innerText = message;
+    } else {
+      displayGameText(element, message);
+    }
+
     //contains() permet de vérifier si un élément est un enfant d'un parent.
     if (!this.app.contains(this.gameText)) this.app.appendChild(this.gameText);
     this.score.innerText = `Attempts: ${this.attempts}`;
-
-    //Si guess est différent de randomNumber, après un délai de 2s gameText sera effacé.
-    // if (guess !== this.randomNumber) {
-    //   setTimeout(() => {
-    //     this.gameText.innerText = message;
-    //   }, 2000);
-    // }
   }
 
   static restart(appElement) {

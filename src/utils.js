@@ -18,3 +18,15 @@ export const createButton = (id, text, classe) => {
 
   return btn;
 };
+
+export const wait = (seconds) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+export const displayGameText = async (element, message) => {
+  element.innerText = "";
+  await wait(0.5);
+  element.innerText = message;
+};
